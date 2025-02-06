@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo Doow 1993</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #gameCanvas {
+            border: 1px solid #000;
+            background-image: url('background.jpg');
+            background-size: cover;
+        }
+        #startButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo ao Jogo Doow 1993</h1>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <button id="startButton">Iniciar Jogo</button>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        let gameRunning = false;
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Lógica do jogo aqui
+            ctx.fillStyle = 'red';
+            ctx.fillRect(50, 50, 100, 100);
+        }
+
+        function gameLoop() {
+            if (gameRunning) {
+                draw();
+                requestAnimationFrame(gameLoop);
+            }
+        }
+
+        document.getElementById('startButton').addEventListener('click', () => {
+            gameRunning = true;
+            gameLoop();
+        });
+    </script>
+</body>
+</html>
